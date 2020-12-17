@@ -1,0 +1,353 @@
+------CREAMOS LA TABLA : CLIENTE
+
+CREATE TABLE CLIENTE1(
+    IDCLIENTE       NUMBER PRIMARY KEY,
+    NOMBRE          VARCHAR2(50),
+    APELLIDO        VARCHAR2(50),
+    DNI             NUMBER,
+    TELEFONO        NUMBER,
+    DIRECCION       VARCHAR2(50),
+    SEXO            VARCHAR2(50),
+    CODIGO_CLIENTE  NUMBER,
+    ESTADO          VARCHAR2(1)
+    );
+
+---CREE UNA SECUENCIA LLAMADA SQ_CLIENTE1
+CREATE SEQUENCE SQ_CLIENTE1
+START WITH 1
+INCREMENT BY 1
+MINVALUE 1
+NOCYCLE;
+--------PRUEBA LA SECUENCIA UTILIZADO SQ_CLIENTE1
+SELECT
+        SQ_CLIENTE1.NEXTVAL
+        FROM
+            DUAL;
+COMMIT;
+------------------------------------------------------------
+
+
+INSERT INTO CLIENTE1 Values (
+SQ_CLIENTE1.NEXTVAL,
+'Daniel',
+'Diaz',
+66852145,
+253546485,
+'Sector 2 grupo 10 manzana k lote 2',
+'Masculino',
+1,
+'A'
+);
+INSERT INTO CLIENTE1 Values (
+SQ_CLIENTE1.NEXTVAL,
+'Carlos',
+'Torres',
+85421587,
+915845250,
+'Sector 2 grupo 5 manzana k lote 3',
+'Masculino',
+2,
+'A'
+);
+INSERT INTO CLIENTE1 Values (
+SQ_CLIENTE1.NEXTVAL,
+'Jhon',
+'Puma ',
+25214174,
+965842152,
+'Sector 1 grupo 22 manzana k lote 2',
+'Masculino',
+3,
+'A'
+);
+INSERT INTO CLIENTE1 Values (
+SQ_CLIENTE1.NEXTVAL,
+'Carlos',
+'Gustavo ',
+69582312,
+936952452,
+'Sector 3 grupo 14 manzana f lote 7',
+'Masculino',
+4,
+'A'
+);
+INSERT INTO CLIENTE1 Values (
+SQ_CLIENTE1.NEXTVAL,
+'Naomi',
+'Cordova',
+12584251,
+949854755,
+'Sector 1 grupo 22a manzana e lote 20',
+'Femenino',
+5,
+'A'
+);
+INSERT INTO CLIENTE1 Values (
+SQ_CLIENTE1.NEXTVAL,
+'Gian Luca',
+'Lapa Dula',
+61524521,
+912520245,
+'Sector 4 grupo 20 manzana F lote 9',
+'Masculino',
+6,
+'A'
+);
+COMMIT;
+SELECT *
+FROM CLIENTE1;
+---------------------------
+
+-- ELIMINAR un registro
+DELETE
+FROM CLIENTE1
+WHERE
+    IDCLIENTE = 8;
+
+DELETE
+FROM CLIENTE1
+WHERE
+    IDCLIENTE = 9;
+-- Confirmar cambios
+COMMIT;
+
+----------------------------
+
+-- Modificar registro de la tabla IDCLIENTE
+UPDATE CLIENTE1
+SET
+    NOMBRE= 'GRACIELA',
+    APELLIDO= '41',
+    DNI= '10442569',
+    TELEFONO= '999082022',
+    DIRECCION = 'SEC2 GR 17 MZ H LT 15',
+    SEXO=  'MUJER',
+    CODIGO_CLIENTE= '1',
+    ESTADO= 'A'
+WHERE
+    IDCLIENTE = 10;
+
+-- Confirmar modificación
+commit;
+---------------------------------------------
+UPDATE CLIENTE1
+SET
+    NOMBRE= 'LUCERO',
+    APELLIDO= 'ZEGARRA',
+    DNI= '154355569',
+    TELEFONO= '90082022',
+    DIRECCION = 'SEC8 GR 5 MZ J LT 15',
+    SEXO=  'MUJER',
+    CODIGO_CLIENTE= '2',
+    ESTADO= 'A'
+WHERE
+    IDCLIENTE = 11;
+
+-- Confirmar modificación
+commit;
+------------------------------------------
+
+
+
+
+
+CREATE TABLE TIPO_CLIENTE1(
+    IDCODIGO_CLIENTE  NUMBER PRIMARY KEY,
+    NOMBRE            VARCHAR2(50),
+    ESTADO            VARCHAR2(1)
+    );
+---CREE UNA SECUENCIA LLAMADA SQ_TIPO_CLIENTE1
+CREATE SEQUENCE SQ_TIPO_CLIENTE1
+START WITH 1
+INCREMENT BY 1
+MINVALUE 1
+NOCYCLE;
+--------PRUEBA LA SECUENCIA UTILIZADO SQ_TIPO_CLIENTE1
+SELECT
+        SQ_TIPO_CLIENTE1.NEXTVAL
+        FROM
+            DUAL;
+COMMIT;
+------------------------------------------------------------
+
+
+
+CREATE TABLE VENTA1(
+    IDVENTA         NUMBER PRIMARY KEY,
+    TOTAL_VENTA     NUMBER,
+    CODIGO_EMPLEADO NUMBER,
+    NUMERO_CLIENTE  NUMBER,
+    ESTADO          VARCHAR2(1)
+    );
+
+
+---CREE UNA SECUENCIA LLAMADA SQ_VENTA1
+CREATE SEQUENCE SQ_VENTA1
+START WITH 1
+INCREMENT BY 1
+MINVALUE 1
+NOCYCLE;
+--------PRUEBA LA SECUENCIA UTILIZADO SQ_VENTA1
+SELECT
+        SQ_VENTA1.NEXTVAL
+        FROM
+            DUAL;
+COMMIT;
+------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+----------------------------------------------
+CREATE TABLE DETALLE_VENTA1(
+    CANTIDAD_VENTA  NUMBER PRIMARY KEY,
+    IMPORTE_VENTA   NUMBER,
+    NUMERO_VENTA    NUMBER,
+    CODIGO_COMIDA   NUMBER,
+    ESTADO          VARCHAR2(1)
+    );
+---CREE UNA SECUENCIA LLAMADA SQ_DETALLE_VENTA1
+CREATE SEQUENCE SQ_DETALLE_VENTA1
+START WITH 1
+INCREMENT BY 1
+MINVALUE 1
+NOCYCLE;
+--------PRUEBA LA SECUENCIA UTILIZADO SQ_DETALLE_VENTA1
+SELECT
+        SQ_DETALLE_VENTA1.NEXTVAL
+        FROM
+            DUAL;
+COMMIT;
+------------------------------------------------------------
+
+CREATE TABLE EMPLEADO1(
+    IDEEMPLEADO     NUMBER PRIMARY KEY,
+    NOMBRE          VARCHAR2(50),
+    APELLIDO        VARCHAR2(50),
+    DNI             NUMBER,
+    TELEFONO        NUMBER,
+    SEXO            VARCHAR2(50),
+    DIRECCION       VARCHAR2(50),
+    CLAVE           NUMBER,
+    CODIGO_EMPLEADO NUMBER,
+    ESTADO          VARCHAR2(1)
+    );
+
+---CREE UNA SECUENCIA LLAMADA SQ_EMPLEADO1
+CREATE SEQUENCE SQ_EMPLEADO1
+START WITH 1
+INCREMENT BY 1
+MINVALUE 1
+NOCYCLE;
+--------PRUEBA LA SECUENCIA UTILIZADO SQ_EMPLEADO1
+SELECT
+        SQ_EMPLEADO1.NEXTVAL
+        FROM
+            DUAL;
+COMMIT;
+------------------------------------------------------------
+CREATE TABLE TIPO_EMPLEADO1(
+    IDCODIGO_EMPLEADO     NUMBER PRIMARY KEY,
+    NOMBRE                VARCHAR2(60),
+    ESTADO                VARCHAR2(1)
+    );
+
+---CREE UNA SECUENCIA LLAMADA SQ_TIPO_EMPLEADO1
+CREATE SEQUENCE SQ_TIPO_EMPLEADO1
+START WITH 1
+INCREMENT BY 1
+MINVALUE 1
+NOCYCLE;
+--------PRUEBA LA SECUENCIA UTILIZADO SQ_TIPO_EMPLEADO1
+SELECT
+        SQ_TIPO_EMPLEADO1.NEXTVAL
+        FROM
+            DUAL;
+COMMIT;
+------------------------------------------------------------
+CREATE TABLE COMIDA1(
+    IDCOMIDA        NUMBER PRIMARY KEY,
+    NOMBRE          VARCHAR2(50),
+    DESCRIPCION     VARCHAR2(50),
+    PRECIO          NUMBER,
+    CODIGO_COMIDA   NUMBER,
+    ESTADO          VARCHAR2(1)
+    );
+
+---CREE UNA SECUENCIA LLAMADA SQ_COMIDA1
+CREATE SEQUENCE SQ_COMIDA1
+START WITH 1
+INCREMENT BY 1
+MINVALUE 1
+NOCYCLE;
+--------PRUEBA LA SECUENCIA UTILIZADO SQ_COMIDA1
+SELECT
+        SQ_COMIDA1.NEXTVAL
+        FROM
+            DUAL;
+COMMIT;
+------------------------------------------------------------
+CREATE TABLE TIPO_COMIDA1(
+    IDCODIGO_COMIDA  NUMBER PRIMARY KEY,
+    NOMBRE           VARCHAR2(50),
+    ESTADO            VARCHAR2(1)
+    );
+
+---CREE UNA SECUENCIA LLAMADA SQ_TIPO_COMIDA1
+CREATE SEQUENCE SQ_TIPO_COMIDA1
+START WITH 1
+INCREMENT BY 1
+MINVALUE 1
+NOCYCLE;
+--------PRUEBA LA SECUENCIA UTILIZADO SQ_TIPO_COMIDA1
+SELECT
+        SQ_TIPO_COMIDA1.NEXTVAL
+        FROM
+            DUAL;
+COMMIT;
+
+
+
+SELECT sysdate
+from dual;
+
+
+
+
+
+create table hora(
+    IDCODIGO_COMIDA  NUMBER PRIMARY KEY,
+    NOMBRE           VARCHAR2(50),
+    ESTADO           VARCHAR2(1),
+    fecha            TIMESTAMP   
+    
+);
+SELECT
+    *
+FROM
+    hora;
+-- Insertar Registros
+INSERT INTO hora VALUES (
+    1,
+    'Pablo Lévano',
+    'A'
+);
+
+
+
